@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravan Khankishiyev | Technical Product Owner</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary: #475569;
+        --light: #f8fafc;
+        --dark: #0f172a;
+        --success: #10b981;
+        --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-main);
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+      }
+
+      header {
+        background-color: var(--dark);
+        color: white;
+        padding: 2rem 0;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4rem 0;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-dark);
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--dark);
+      }
+
+      .about-content {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .skill-category {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+
+      .skill-list {
+        list-style: none;
+      }
+
+      .skill-list li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .skill-list li::before {
+        content: "•";
+        color: var(--primary);
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .projects {
+        background-color: #f1f5f9;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-img {
+        height: 200px;
+        background-color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .tag {
+        display: inline-block;
+        background-color: #e2e8f0;
+        color: var(--secondary);
+        padding: 0.3rem 0.6rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .experience-timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .experience-timeline::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background-color: #e2e8f0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        left: -7px;
+        top: 0;
+      }
+
+      .timeline-date {
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-company {
+        font-weight: bold;
+        color: var(--secondary);
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 3rem 0;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .footer-col {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .footer-col h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--primary);
+      }
+
+      .contact-list {
+        list-style: none;
+      }
+
+      .contact-list li {
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-list a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .contact-list a:hover {
+        color: var(--primary);
+      }
+
+      .copyright {
+        margin-top: 2rem;
+        text-align: center;
+        color: #94a3b8;
+      }
+
+      @media (max-width: 768px) {
+        .about-content {
+          flex-direction: column;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">RK</div>
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="hero">
+          <h1>Ravan Khankishiyev</h1>
+          <p>
+            Technical Product Owner with a strong front-end development
+            background. Bridging the gap between technical expertise and
+            strategic product vision.
+          </p>
+          <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm a Technical Product Owner with a comprehensive background in
+              front-end development. My journey began as a developer, which
+              equipped me with a deep understanding of technical implementations
+              and challenges that development teams face.
+            </p>
+            <p>
+              My transition to product ownership has allowed me to leverage my
+              technical expertise while developing strategic product thinking. I
+              excel at bridging the gap between business goals and technical
+              solutions, ensuring products are both technically sound and
+              user-focused.
+            </p>
+            <p>
+              I believe in data-driven decision making, agile methodologies, and
+              continuous improvement. My approach combines technical knowledge,
+              user empathy, and business acumen to deliver products that create
+              real value.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Product Management</h3>
+            <ul class="skill-list">
+              <li>Product Roadmap Development</li>
+              <li>User Story Writing</li>
+              <li>Backlog Prioritization</li>
+              <li>Stakeholder Management</li>
+              <li>Cross-functional Team Coordination</li>
+              <li>Market Research & Analysis</li>
+              <li>Product Strategy</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Technical</h3>
+            <ul class="skill-list">
+              <li>React.js, Next.js</li>
+              <li>JavaScript, TypeScript</li>
+              <li>HTML5, CSS3, SCSS</li>
+              <li>Node.js</li>
+              <li>RESTful APIs</li>
+              <li>Git, GitHub</li>
+              <li>CI/CD Principles</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Methodologies</h3>
+            <ul class="skill-list">
+              <li>Agile/Scrum</li>
+              <li>Kanban</li>
+              <li>User-Centered Design</li>
+              <li>DevOps</li>
+              <li>Continuous Integration</li>
+              <li>Test-Driven Development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-img">
+              <img src="/api/placeholder/350/200" alt="ND Company Website" />
+            </div>
+            <div class="project-content">
+              <h3>ND Company QSC</h3>
+              <p>
+                Led the development and implementation of a comprehensive web
+                platform for a construction company, resulting in a 25% increase
+                in customer engagement.
+              </p>
+              <div class="tags">
+                <span class="tag">Product Strategy</span>
+                <span class="tag">Web Platform</span>
+                <span class="tag">Customer Engagement</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-img">
+              <img src="/api/placeholder/350/200" alt="Caspian Capital Group" />
+            </div>
+            <div class="project-content">
+              <h3>Caspian Capital Group</h3>
+              <p>
+                Managed the development of an integrated web platform for a
+                group of companies, focusing on seamless user experience and
+                effective communication channels.
+              </p>
+              <div class="tags">
+                <span class="tag">Multi-Company Platform</span>
+                <span class="tag">User Experience</span>
+                <span class="tag">Communication Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-img">
+              <img src="/api/placeholder/350/200" alt="Movie Website" />
+            </div>
+            <div class="project-content">
+              <h3>Movie Platform</h3>
+              <p>
+                Led a team of 4 developers using Agile methodology to build a
+                React-based movie platform with 65,000+ movies, featuring
+                advanced filtering and user preference management.
+              </p>
+              <div class="tags">
+                <span class="tag">React.js</span>
+                <span class="tag">Agile Team Lead</span>
+                <span class="tag">User Experience Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2>Professional Journey</h2>
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">05/2023 - Present</div>
+            <div class="timeline-title">Technical Product Owner</div>
+            <div class="timeline-company">
+              NF Education & Caspian Capital Group
+            </div>
+            <ul>
+              <li>
+                Led the strategy and development of multiple web systems,
+                ensuring alignment with business goals
+              </li>
+              <li>
+                Managed product backlogs and prioritized features based on user
+                needs and business value
+              </li>
+              <li>
+                Coordinated between technical teams and stakeholders to ensure
+                smooth product delivery
+              </li>
+              <li>
+                Implemented workflows and tools that increased team productivity
+                by 20%
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">12/2023 - 05/2024</div>
+            <div class="timeline-title">Director Assistant & IT Manager</div>
+            <div class="timeline-company">ELTA Development QSC</div>
+            <ul>
+              <li>
+                Spearheaded IT projects resulting in streamlined operations and
+                increased productivity by 20%
+              </li>
+              <li>
+                Optimized product development processes, reducing project
+                turnaround time by 30%
+              </li>
+              <li>
+                Managed UX improvements that led to a 15% increase in customer
+                satisfaction
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">05/2023 - 09/2023</div>
+            <div class="timeline-title">
+              Team Lead & Middle Front-end Developer
+            </div>
+            <div class="timeline-company">Trust Center</div>
+            <ul>
+              <li>
+                Led a development team to create 6 robust web applications using
+                Agile methodologies
+              </li>
+              <li>
+                Streamlined development processes by implementing modern
+                technologies across 10 projects
+              </li>
+              <li>
+                Monitored and ensured the on-time delivery of 12 projects while
+                maintaining quality standards
+              </li>
+              <li>
+                Mentored 8 junior developers, fostering a culture of
+                collaboration and continuous learning
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h3>Ravan Khankishiyev</h3>
+            <p>
+              Technical Product Owner bridging the gap between vision and
+              execution.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h3>Connect</h3>
+            <ul class="social-links">
+              <li>
+                <a href="https://www.linkedin.com/in/khankishiyev-ravan/"
+                  >LinkedIn</a
+                >
+              </li>
+              <li><a href="https://github.com/Khankisiyevravan">GitHub</a></li>
+              <li><a href="https://www.khankisiyevravan.com">Website</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <ul class="contact-list">
+              <li>
+                <a href="mailto:ravan.xankisiyev.032@gmail.com"
+                  >ravan.xankisiyev.032@gmail.com</a
+                >
+              </li>
+              <li><a href="tel:+994556457732">+994 55 645 77 32</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; 2025 Ravan Khankishiyev. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
