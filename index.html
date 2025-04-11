@@ -225,6 +225,52 @@
         left: 0;
       }
 
+      .company-group {
+        position: relative;
+        margin-bottom: 3rem;
+        padding-left: 2rem;
+      }
+
+      .company-group::before {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        left: -7px;
+        top: 0;
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .position-item {
+        margin-bottom: 1.5rem;
+        padding-left: 1rem;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .position-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-date {
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
       .timeline-item {
         position: relative;
         margin-bottom: 2rem;
@@ -240,18 +286,6 @@
         background-color: var(--primary);
         left: -7px;
         top: 0;
-      }
-
-      .timeline-date {
-        font-weight: bold;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
       }
 
       .timeline-company {
@@ -501,52 +535,97 @@
       <div class="container">
         <h2>Professional Journey</h2>
         <div class="experience-timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">05/2023 - Present</div>
-            <div class="timeline-title">Technical Product Owner</div>
-            <div class="timeline-company">
-              NF Education & Caspian Capital Group
+          <!-- ELTA Development - Both positions grouped -->
+          <div class="company-group">
+            <!-- <div class="company-name">05/2024 - Present</div> -->
+            <div class="company-name">ELTA Development QSC</div>
+            <div class="position-item">
+              <div class="timeline-date">11/2024 - Present</div>
+              <div class="timeline-title">
+                Information Communication Technology Specialist
+              </div>
+              <ul>
+                <li>
+                  Management of IT infrastructure and network: Building and
+                  managing a stable and secure IT ecosystem in the company.
+                </li>
+                <li>
+                  Security and system monitoring: Developing strategies for
+                  cybersecurity and providing information security.
+                </li>
+                <li>
+                  Technical support and optimization: Providing high-level
+                  support for staff and enhancing performance.
+                </li>
+                <li>
+                  Cloud technologies and database management: Reliable data
+                  storage, implementation of analytical solutions with the help
+                  of state-of-the-art technologies.
+                </li>
+                <li>
+                  IT project management: Implementation of new technological
+                  solutions, organization of digital transformation processes.
+                </li>
+              </ul>
             </div>
-            <ul>
-              <li>
-                Led the strategy and development of multiple web systems,
-                ensuring alignment with business goals
-              </li>
-              <li>
-                Managed product backlogs and prioritized features based on user
-                needs and business value
-              </li>
-              <li>
-                Coordinated between technical teams and stakeholders to ensure
-                smooth product delivery
-              </li>
-              <li>
-                Implemented workflows and tools that increased team productivity
-                by 20%
-              </li>
-            </ul>
+            <div class="position-item">
+              <div class="timeline-date">05/2024 - 11/2024</div>
+              <div class="timeline-title">Director Assistant, IT Manager</div>
+              <ul>
+                <li>
+                  Spearheaded IT projects resulting in streamlined operations
+                  and increased productivity by 20%
+                </li>
+                <li>
+                  Optimized product development processes, reducing project
+                  turnaround time by 30%
+                </li>
+                <li>
+                  Managed UX improvements that led to a 15% increase in customer
+                  satisfaction
+                </li>
+              </ul>
+            </div>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">12/2023 - 05/2024</div>
-            <div class="timeline-title">Director Assistant & IT Manager</div>
-            <div class="timeline-company">ELTA Development QSC</div>
-            <ul>
-              <li>
-                Spearheaded IT projects resulting in streamlined operations and
-                increased productivity by 20%
-              </li>
-              <li>
-                Optimized product development processes, reducing project
-                turnaround time by 30%
-              </li>
-              <li>
-                Managed UX improvements that led to a 15% increase in customer
-                satisfaction
-              </li>
-            </ul>
+          <div class="company-group">
+            <!-- <div class="company-name">05/2024 - Present</div> -->
+            <div class="company-name">NF Education</div>
+            <div class="position-item">
+              <div class="timeline-date">05/2023 - 05/2024</div>
+              <div class="timeline-title">Middle Frontend Web Developer</div>
+              <ul>
+                <li>Managed the development and deployment of web projects.</li>
+                <li>
+                  Preserved seamless functionality and security for company
+                  systems, supporting {5} key departments.
+                </li>
+                <li>
+                  Efficiently supported the director in administrative and
+                  communication tasks for {3} major initiatives.
+                </li>
+              </ul>
+            </div>
           </div>
-
+          <div class="company-group">
+            <!-- <div class="company-name">05/2024 - Present</div> -->
+            <div class="company-name">Trust Center Holding MMC</div>
+            <div class="position-item">
+              <div class="timeline-date">05/2023 - 05/2024</div>
+              <div class="timeline-title">Middle Frontend Web Developer</div>
+              <ul>
+                <li>Managed the development and deployment of web projects.</li>
+                <li>
+                  Preserved seamless functionality and security for company
+                  systems, supporting {5} key departments.
+                </li>
+                <li>
+                  Efficiently supported the director in administrative and
+                  communication tasks for {3} major initiatives.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Other companies remain as separate entries -->
           <div class="timeline-item">
             <div class="timeline-date">05/2023 - 09/2023</div>
             <div class="timeline-title">
@@ -569,6 +648,40 @@
               <li>
                 Mentored 8 junior developers, fostering a culture of
                 collaboration and continuous learning
+              </li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">05/2023 - Present</div>
+            <div class="timeline-title">Web System Developer (Freelancer)</div>
+            <div class="timeline-company">NF Education</div>
+            <ul>
+              <li>
+                Developed and maintained web systems for educational institution
+              </li>
+              <li>
+                Implemented user-centered design approaches to improve student
+                and faculty experience
+              </li>
+              <li>
+                Created scalable solutions to support growing educational
+                requirements
+              </li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">05/2023 - 05/2024</div>
+            <div class="timeline-title">
+              Digital Technology Front End Trainer, Middle Front-end Developer
+            </div>
+            <div class="timeline-company">Caspian Capital Group MMC</div>
+            <ul>
+              <li>
+                Trained and mentored junior developers in front-end technologies
+              </li>
+              <li>Developed modern web applications for financial services</li>
+              <li>
+                Led adoption of best practices in web development across teams
               </li>
             </ul>
           </div>
