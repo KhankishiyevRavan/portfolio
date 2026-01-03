@@ -3,733 +3,854 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ravan Khankishiyev | Technical Product Owner</title>
+    <title>Ravan Khankishiyev | Front-End Developer • Technical Product Owner</title>
+    <meta
+      name="description"
+      content="Ravan Khankishiyev — Front-End Developer & Technical Product Owner. React/Next.js, Product Thinking, Agile, and scalable web systems."
+    />
     <style>
-      :root {
-        --primary: #2563eb;
-        --primary-dark: #1d4ed8;
-        --secondary: #475569;
-        --light: #f8fafc;
-        --dark: #0f172a;
-        --success: #10b981;
-        --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      :root{
+        --bg: #0b1220;
+        --surface: rgba(255,255,255,.06);
+        --surface-2: rgba(255,255,255,.09);
+        --text: #e8eefc;
+        --muted: rgba(232,238,252,.75);
+        --border: rgba(255,255,255,.14);
+        --brand: #4f8cff;
+        --brand-2: #7c3aed;
+        --ok: #22c55e;
+        --shadow: 0 18px 40px rgba(0,0,0,.35);
+        --radius: 16px;
+        --radius-2: 22px;
+        --max: 1120px;
+        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+      }
+      [data-theme="light"]{
+        --bg: #f6f8ff;
+        --surface: rgba(2,6,23,.05);
+        --surface-2: rgba(2,6,23,.08);
+        --text: #0b1220;
+        --muted: rgba(11,18,32,.72);
+        --border: rgba(2,6,23,.12);
+        --brand: #2563eb;
+        --brand-2: #7c3aed;
+        --shadow: 0 18px 40px rgba(2,6,23,.12);
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: var(--font-main);
+      *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
+      body{
+        font-family: var(--font);
+        background: radial-gradient(1200px 600px at 20% -10%, rgba(79,140,255,.35), transparent 55%),
+                    radial-gradient(900px 500px at 95% 10%, rgba(124,58,237,.25), transparent 55%),
+                    var(--bg);
+        color: var(--text);
         line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--light);
+      }
+      a{color:inherit;text-decoration:none}
+      .container{width:92%;max-width:var(--max);margin:0 auto}
+      .pill{
+        display:inline-flex;gap:.5rem;align-items:center;
+        padding:.38rem .7rem;border:1px solid var(--border);
+        background: var(--surface); border-radius: 999px;
+        color: var(--muted); font-size: .92rem;
+        backdrop-filter: blur(10px);
+      }
+      .dot{width:8px;height:8px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 3px rgba(34,197,94,.16)}
+      .btn{
+        display:inline-flex;align-items:center;gap:.55rem;
+        padding:.85rem 1.05rem;border-radius: 12px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: white; font-weight: 700;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: 0 14px 30px rgba(79,140,255,.22);
+        transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+        cursor:pointer;
+      }
+      .btn:hover{transform: translateY(-1px); filter: brightness(1.02); box-shadow: 0 18px 36px rgba(79,140,255,.25)}
+      .btn.secondary{
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        box-shadow: none;
+      }
+      .btn.secondary:hover{transform: translateY(-1px)}
+      .icon{
+        width:18px;height:18px;display:inline-block;
       }
 
-      header {
-        background-color: var(--dark);
-        color: white;
-        padding: 2rem 0;
+      /* NAV */
+      header{
+        position: sticky; top: 0; z-index: 20;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(to bottom, rgba(0,0,0,.28), transparent);
+        border-bottom: 1px solid rgba(255,255,255,.06);
       }
-
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
+      [data-theme="light"] header{
+        background: linear-gradient(to bottom, rgba(246,248,255,.85), rgba(246,248,255,.45));
+        border-bottom: 1px solid rgba(2,6,23,.08);
       }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
+      .nav{
+        display:flex;align-items:center;justify-content:space-between;
+        padding: .9rem 0;
       }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
+      .brand{
+        display:flex;align-items:center;gap:.75rem;
+        font-weight: 900; letter-spacing:.4px;
       }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
+      .logo{
+        width:40px;height:40px;border-radius:14px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        display:grid;place-items:center;
+        box-shadow: var(--shadow);
+        font-weight:900;
       }
-
-      .nav-links li {
-        margin-left: 2rem;
+      .nav-links{display:flex;gap:1.1rem;align-items:center}
+      .nav-links a{
+        color: var(--muted);
+        padding:.45rem .65rem;border-radius: 12px;
+        transition: background .18s ease, color .18s ease;
       }
-
-      .nav-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
+      .nav-links a:hover{background: var(--surface); color: var(--text)}
+      .nav-right{display:flex;gap:.6rem;align-items:center}
+      .icon-btn{
+        display:inline-flex;align-items:center;justify-content:center;
+        width:42px;height:42px;border-radius: 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        cursor:pointer;
+        transition: transform .18s ease, background .18s ease;
       }
+      .icon-btn:hover{transform: translateY(-1px); background: var(--surface-2)}
+      .hamburger{display:none}
 
-      .nav-links a:hover {
-        color: var(--primary);
+      /* HERO */
+      .hero{
+        padding: 4.4rem 0 2.3rem;
       }
-
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 4rem 0;
+      .hero-grid{
+        display:grid;grid-template-columns: 1.35fr .65fr; gap: 2rem;
+        align-items: start;
       }
-
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+      .headline{
+        font-size: clamp(2.2rem, 3.3vw, 3.2rem);
+        line-height: 1.1;
+        letter-spacing: -0.8px;
+        margin: 1rem 0 1rem;
       }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
+      .sub{
+        color: var(--muted);
+        font-size: 1.08rem;
+        max-width: 64ch;
       }
-
-      .btn {
-        display: inline-block;
-        background-color: var(--primary);
-        color: white;
-        padding: 0.8rem 1.5rem;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
+      .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top: 1.3rem}
+      .chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top: 1.15rem}
+      .card{
+        background: linear-gradient(180deg, var(--surface), transparent);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow);
+        overflow:hidden;
       }
-
-      .btn:hover {
-        background-color: var(--primary-dark);
+      .mini{
+        padding: 1.2rem 1.2rem 1.15rem;
       }
-
-      section {
-        padding: 4rem 0;
+      .mini h3{font-size:1.05rem;margin-bottom:.5rem}
+      .mini p{color:var(--muted);font-size:.97rem}
+      .stat{
+        display:flex;justify-content:space-between;align-items:center;
+        padding:.7rem .85rem;border:1px solid var(--border);
+        background: var(--surface); border-radius: 14px;
+        margin-top:.7rem;
       }
+      .stat b{font-size:1.06rem}
+      .stat span{color:var(--muted);font-size:.92rem}
 
-      h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        color: var(--dark);
+      /* SECTIONS */
+      section{padding: 3.4rem 0}
+      .section-title{
+        display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
+        margin-bottom: 1.35rem;
       }
-
-      .about-content {
-        display: flex;
-        gap: 3rem;
+      h2{
+        font-size: 1.75rem;
+        letter-spacing: -.3px;
       }
-
-      .about-text {
-        flex: 1;
+      .lead{color:var(--muted);max-width:72ch}
+      .grid{
+        display:grid;gap:1rem;
       }
+      .grid-3{grid-template-columns: repeat(3, 1fr)}
+      .grid-2{grid-template-columns: repeat(2, 1fr)}
+      .pad{padding: 1.25rem}
 
-      .skills-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
+      /* SKILLS */
+      .skill-card h3{font-size:1.05rem;margin-bottom:.6rem}
+      .list{margin-top:.2rem;display:grid;gap:.45rem}
+      .li{display:flex;gap:.6rem;align-items:flex-start;color:var(--muted)}
+      .check{
+        width:18px;height:18px;border-radius:6px;
+        display:grid;place-items:center;flex:0 0 auto;
+        background: rgba(34,197,94,.16);
+        border: 1px solid rgba(34,197,94,.22);
       }
+      .check svg{width:14px;height:14px}
 
-      .skill-category {
-        flex: 1;
-        min-width: 300px;
+      /* PROJECTS */
+      .toolbar{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+      .input{
+        padding:.8rem .9rem;border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        outline:none;
+        min-width: 240px;
       }
-
-      .skill-category h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary);
+      .tag{
+        padding:.35rem .6rem;border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        font-size:.86rem;
       }
-
-      .skill-list {
-        list-style: none;
+      .proj{
+        transition: transform .18s ease, background .18s ease;
       }
-
-      .skill-list li {
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
+      .proj:hover{transform: translateY(-2px)}
+      .proj-top{
+        padding: 1.15rem 1.15rem .95rem;
+        border-bottom: 1px solid var(--border);
+        display:flex;justify-content:space-between;gap:1rem;
       }
-
-      .skill-list li::before {
-        content: "•";
-        color: var(--primary);
-        font-weight: bold;
-        margin-right: 0.5rem;
+      .proj h3{font-size:1.08rem}
+      .proj p{color:var(--muted);margin:.6rem 0 0}
+      .proj-bottom{
+        padding: .95rem 1.15rem 1.15rem;
+        display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
       }
-
-      .projects {
-        background-color: #f1f5f9;
+      .proj-links{display:flex;gap:.55rem;flex-wrap:wrap}
+      .link{
+        padding:.55rem .75rem;border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        font-weight: 650;
+        font-size:.92rem;
       }
+      .link:hover{background: var(--surface-2)}
 
-      .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      .project-card {
-        background-color: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-img {
-        height: 200px;
-        background-color: #e2e8f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .project-content {
-        padding: 1.5rem;
-      }
-
-      .project-content h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-      }
-
-      .tag {
-        display: inline-block;
-        background-color: #e2e8f0;
-        color: var(--secondary);
-        padding: 0.3rem 0.6rem;
-        border-radius: 3px;
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .experience-timeline {
+      /* TIMELINE */
+      .timeline{
         position: relative;
-        max-width: 800px;
-        margin: 0 auto;
+        padding-left: 18px;
       }
-
-      .experience-timeline::before {
-        content: "";
-        position: absolute;
-        width: 2px;
-        background-color: #e2e8f0;
-        top: 0;
-        bottom: 0;
-        left: 0;
+      .timeline::before{
+        content:"";
+        position:absolute;left:6px;top:6px;bottom:6px;
+        width:2px;background: var(--border);
       }
-
-      .company-group {
-        position: relative;
-        margin-bottom: 3rem;
-        padding-left: 2rem;
-      }
-
-      .company-group::before {
-        content: "";
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: var(--primary);
-        left: -7px;
-        top: 0;
-      }
-
-      .company-name {
-        font-size: 1.4rem;
-        font-weight: bold;
-        color: var(--dark);
+      .job{
+        position:relative;
+        padding-left: 22px;
         margin-bottom: 1rem;
       }
+      .job::before{
+        content:"";
+        position:absolute;left:-1px;top: .55rem;
+        width:14px;height:14px;border-radius: 999px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 0 0 3px rgba(79,140,255,.18);
+      }
+      .job h3{font-size:1.06rem}
+      .meta{color:var(--muted);font-size:.94rem;margin-top:.15rem}
+      .bullets{margin-top:.55rem;display:grid;gap:.45rem}
+      .bullets li{color:var(--muted);margin-left: 1.1rem}
 
-      .position-item {
-        margin-bottom: 1.5rem;
-        padding-left: 1rem;
-        border-left: 2px solid #e2e8f0;
+      /* FOOTER */
+      footer{padding: 2.6rem 0 3rem;border-top:1px solid var(--border)}
+      .footer-grid{display:grid;grid-template-columns: 1.3fr .7fr 1fr;gap:1rem}
+      .muted{color:var(--muted)}
+      .fine{margin-top:1.2rem;color:var(--muted);font-size:.92rem}
+
+      /* MOBILE */
+      @media (max-width: 920px){
+        .hero-grid{grid-template-columns: 1fr}
+        .grid-3{grid-template-columns: 1fr}
+        .grid-2{grid-template-columns: 1fr}
+        .footer-grid{grid-template-columns: 1fr}
+        .nav-links{display:none}
+        .hamburger{display:inline-flex}
       }
 
-      .position-item:last-child {
-        margin-bottom: 0;
+      /* Mobile menu */
+      .mobile{
+        display:none;
+        padding-bottom: .9rem;
       }
-
-      .timeline-date {
-        font-weight: bold;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
+      .mobile.open{display:block}
+      .mobile a{
+        display:block;
+        padding:.75rem .85rem;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        margin-top: .6rem;
+        color: var(--text);
       }
-
-      .timeline-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 2rem;
-        padding-left: 2rem;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: var(--primary);
-        left: -7px;
-        top: 0;
-      }
-
-      .timeline-company {
-        font-weight: bold;
-        color: var(--secondary);
-        margin-bottom: 1rem;
-      }
-
-      footer {
-        background-color: var(--dark);
-        color: white;
-        padding: 3rem 0;
-      }
-
-      .footer-content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-      }
-
-      .footer-col {
-        flex: 1;
-        min-width: 250px;
-      }
-
-      .footer-col h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-
-      .social-links {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-      }
-
-      .social-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .social-links a:hover {
-        color: var(--primary);
-      }
-
-      .contact-list {
-        list-style: none;
-      }
-
-      .contact-list li {
-        margin-bottom: 0.5rem;
-      }
-
-      .contact-list a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .contact-list a:hover {
-        color: var(--primary);
-      }
-
-      .copyright {
-        margin-top: 2rem;
-        text-align: center;
-        color: #94a3b8;
-      }
-
-      @media (max-width: 768px) {
-        .about-content {
-          flex-direction: column;
-        }
-
-        .nav-links {
-          display: none;
-        }
-      }
+      .mobile a:hover{background: var(--surface-2)}
     </style>
   </head>
   <body>
     <header>
       <div class="container">
-        <nav>
-          <div class="logo">RK</div>
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+        <div class="nav">
+          <a class="brand" href="#top" aria-label="Home">
+            <div class="logo">RK</div>
+            <div>
+              <div style="font-size:.98rem; line-height:1.05;">Ravan Khankishiyev</div>
+              <div style="font-size:.86rem; color:var(--muted);">Front-End • Technical Product Owner</div>
+            </div>
+          </a>
 
-        <div class="hero">
-          <h1>Ravan Khankishiyev</h1>
-          <p>
-            Technical Product Owner with a strong front-end development
-            background. Bridging the gap between technical expertise and
-            strategic product vision.
-          </p>
-          <a href="#contact" class="btn">Get in Touch</a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div class="nav-right">
+            <button id="themeBtn" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <button id="menuBtn" class="icon-btn hamburger" aria-label="Open menu" title="Menu">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <a class="btn" href="#contact" style="padding:.75rem .95rem;">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
+                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Get in touch
+            </a>
+          </div>
+        </div>
+
+        <div id="mobileMenu" class="mobile" aria-label="Mobile menu">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </header>
 
-    <section id="about">
-      <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              I'm a Technical Product Owner with a comprehensive background in
-              front-end development. My journey began as a developer, which
-              equipped me with a deep understanding of technical implementations
-              and challenges that development teams face.
+    <main id="top" class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="pill"><span class="dot"></span> Available for opportunities</span>
+            <h1 class="headline">
+              Building user-friendly products with <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">strong technical execution</span>.
+            </h1>
+            <p class="sub">
+              I’m <b>Ravan Khankishiyev</b> — a Front-End Developer with Product Ownership mindset. I translate business goals into scalable interfaces, align stakeholders, and deliver measurable outcomes with Agile practices.
             </p>
-            <p>
-              My transition to product ownership has allowed me to leverage my
-              technical expertise while developing strategic product thinking. I
-              excel at bridging the gap between business goals and technical
-              solutions, ensuring products are both technically sound and
-              user-focused.
-            </p>
-            <p>
-              I believe in data-driven decision making, agile methodologies, and
-              continuous improvement. My approach combines technical knowledge,
-              user empathy, and business acumen to deliver products that create
-              real value.
+
+            <div class="hero-actions">
+              <a class="btn" href="#projects">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                View projects
+              </a>
+              <a class="btn secondary" href="#experience">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Experience
+              </a>
+            </div>
+
+            <div class="chips">
+              <span class="pill">React • Next.js</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">Product Strategy</span>
+              <span class="pill">Agile/Scrum</span>
+              <span class="pill">Node.js • REST APIs</span>
+            </div>
+          </div>
+
+          <div class="card mini">
+            <h3>Quick facts</h3>
+            <p>Based in Baku, Azerbaijan. Focused on modern web systems and product delivery.</p>
+
+            <div class="stat">
+              <div>
+                <b>3+ years</b>
+                <div><span>Front-end experience</span></div>
+              </div>
+              <span class="tag">Web</span>
+            </div>
+            <div class="stat">
+              <div>
+                <b>Agile</b>
+                <div><span>Team leadership</span></div>
+              </div>
+              <span class="tag">Delivery</span>
+            </div>
+            <div class="stat">
+              <div>
+                <b>Product</b>
+                <div><span>Owner mindset</span></div>
+              </div>
+              <span class="tag">Strategy</span>
+            </div>
+
+            <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+              <a class="link" href="https://www.linkedin.com/in/khankishiyev-ravan/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="link" href="https://github.com/Khankisiyevravan" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="link" href="https://khankishiyevravan.info" target="_blank" rel="noreferrer">Website</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-title">
+          <div>
+            <h2>About</h2>
+            <p class="lead">
+              Front-end engineering background + product thinking = better decisions, better UX, faster delivery.
             </p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="skills">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skills-container">
-          <div class="skill-category">
-            <h3>Product Management</h3>
-            <ul class="skill-list">
-              <li>Product Roadmap Development</li>
-              <li>User Story Writing</li>
-              <li>Backlog Prioritization</li>
-              <li>Stakeholder Management</li>
-              <li>Cross-functional Team Coordination</li>
-              <li>Market Research & Analysis</li>
-              <li>Product Strategy</li>
-            </ul>
+        <div class="grid grid-2">
+          <div class="card pad">
+            <h3 style="font-size:1.06rem;">What I do</h3>
+            <p class="muted" style="margin-top:.55rem;">
+              I build responsive, accessible, performance-optimized web apps and help teams align on clear scope, user stories, and priorities.
+              I care about clean architecture, measurable impact, and maintainable UI systems.
+            </p>
+            <div class="bullets" style="margin-top:.7rem;">
+              <ul class="bullets">
+                <li>Translate requirements → user stories → shipped features</li>
+                <li>Design & implement scalable UI with React/Next.js</li>
+                <li>Coordinate delivery with Agile/Scrum</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="skill-category">
+          <div class="card pad">
+            <h3 style="font-size:1.06rem;">How I work</h3>
+            <div class="list" style="margin-top:.7rem;">
+              <div class="li">
+                <span class="check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div><b>Clarity first:</b> defined scope, acceptance criteria, and success metrics.</div>
+              </div>
+              <div class="li">
+                <span class="check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div><b>UX + performance:</b> fast, accessible, mobile-first interfaces.</div>
+              </div>
+              <div class="li">
+                <span class="check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div><b>Continuous improvement:</b> iterate with data, feedback, and retrospectives.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-title">
+          <div>
+            <h2>Skills</h2>
+            <p class="lead">A balanced mix of product, engineering, and delivery methods.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card pad skill-card">
+            <h3>Product</h3>
+            <div class="list">
+              <div class="li"><span class="check">✓</span> Roadmap & prioritization</div>
+              <div class="li"><span class="check">✓</span> User stories & acceptance criteria</div>
+              <div class="li"><span class="check">✓</span> Stakeholder communication</div>
+              <div class="li"><span class="check">✓</span> Product strategy & discovery</div>
+            </div>
+          </div>
+
+          <div class="card pad skill-card">
             <h3>Technical</h3>
-            <ul class="skill-list">
-              <li>React.js, Next.js</li>
-              <li>JavaScript, TypeScript</li>
-              <li>HTML5, CSS3, SCSS</li>
-              <li>Node.js</li>
-              <li>RESTful APIs</li>
-              <li>Git, GitHub</li>
-              <li>CI/CD Principles</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3>Methodologies</h3>
-            <ul class="skill-list">
-              <li>Agile/Scrum</li>
-              <li>Kanban</li>
-              <li>User-Centered Design</li>
-              <li>DevOps</li>
-              <li>Continuous Integration</li>
-              <li>Test-Driven Development</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <div class="project-img">
-              <img src="/api/placeholder/350/200" alt="ND Company Website" />
-            </div>
-            <div class="project-content">
-              <h3>ND Company QSC</h3>
-              <p>
-                Led the development and implementation of a comprehensive web
-                platform for a construction company, resulting in a 25% increase
-                in customer engagement.
-              </p>
-              <div class="tags">
-                <span class="tag">Product Strategy</span>
-                <span class="tag">Web Platform</span>
-                <span class="tag">Customer Engagement</span>
-              </div>
+            <div class="list">
+              <div class="li"><span class="check">✓</span> React, Next.js, TypeScript</div>
+              <div class="li"><span class="check">✓</span> HTML, CSS/SCSS, UI systems</div>
+              <div class="li"><span class="check">✓</span> Node.js, REST APIs</div>
+              <div class="li"><span class="check">✓</span> Git/GitHub, CI/CD basics</div>
             </div>
           </div>
 
-          <div class="project-card">
-            <div class="project-img">
-              <img src="/api/placeholder/350/200" alt="Caspian Capital Group" />
-            </div>
-            <div class="project-content">
-              <h3>Caspian Capital Group</h3>
-              <p>
-                Managed the development of an integrated web platform for a
-                group of companies, focusing on seamless user experience and
-                effective communication channels.
-              </p>
-              <div class="tags">
-                <span class="tag">Multi-Company Platform</span>
-                <span class="tag">User Experience</span>
-                <span class="tag">Communication Strategy</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-img">
-              <img src="/api/placeholder/350/200" alt="Movie Website" />
-            </div>
-            <div class="project-content">
-              <h3>Movie Platform</h3>
-              <p>
-                Led a team of 4 developers using Agile methodology to build a
-                React-based movie platform with 65,000+ movies, featuring
-                advanced filtering and user preference management.
-              </p>
-              <div class="tags">
-                <span class="tag">React.js</span>
-                <span class="tag">Agile Team Lead</span>
-                <span class="tag">User Experience Design</span>
-              </div>
+          <div class="card pad skill-card">
+            <h3>Delivery</h3>
+            <div class="list">
+              <div class="li"><span class="check">✓</span> Agile/Scrum, Kanban</div>
+              <div class="li"><span class="check">✓</span> Cross-functional coordination</div>
+              <div class="li"><span class="check">✓</span> Quality & testing mindset</div>
+              <div class="li"><span class="check">✓</span> Continuous improvement</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="experience">
-      <div class="container">
-        <h2>Professional Journey</h2>
-        <div class="experience-timeline">
-          <!-- ELTA Development - Both positions grouped -->
-          <div class="company-group">
-            <!-- <div class="company-name">05/2024 - Present</div> -->
-            <div class="company-name">ELTA Development QSC</div>
-            <div class="position-item">
-              <div class="timeline-date">11/2024 - Present</div>
-              <div class="timeline-title">
-                Information Communication Technology Specialist
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-title">
+          <div>
+            <h2>Projects</h2>
+            <p class="lead">Selected projects aligned with your CV — add/replace live links anytime.</p>
+          </div>
+
+          <div class="toolbar">
+            <input id="search" class="input" placeholder="Search projects..." />
+            <button class="btn secondary" data-filter="all" type="button">All</button>
+            <button class="btn secondary" data-filter="web" type="button">Web</button>
+            <button class="btn secondary" data-filter="platform" type="button">Platform</button>
+            <button class="btn secondary" data-filter="plugin" type="button">Plugin</button>
+          </div>
+        </div>
+
+        <div id="projectGrid" class="grid grid-3">
+          <!-- You can edit URLs below -->
+          <article class="card proj" data-tags="platform web">
+            <div class="proj-top">
+              <div>
+                <h3>KOMBIM.AZ — Contract & Subscription System</h3>
+                <span class="tag">Platform</span> <span class="tag">Web</span>
+                <p>Contract/payment schedule, role-based access, notifications, and scalable admin workflows.</p>
               </div>
-              <ul>
-                <li>
-                  Management of IT infrastructure and network: Building and
-                  managing a stable and secure IT ecosystem in the company.
-                </li>
-                <li>
-                  Security and system monitoring: Developing strategies for
-                  cybersecurity and providing information security.
-                </li>
-                <li>
-                  Technical support and optimization: Providing high-level
-                  support for staff and enhancing performance.
-                </li>
-                <li>
-                  Cloud technologies and database management: Reliable data
-                  storage, implementation of analytical solutions with the help
-                  of state-of-the-art technologies.
-                </li>
-                <li>
-                  IT project management: Implementation of new technological
-                  solutions, organization of digital transformation processes.
-                </li>
-              </ul>
             </div>
-            <div class="position-item">
-              <div class="timeline-date">05/2024 - 11/2024</div>
-              <div class="timeline-title">Director Assistant, IT Manager</div>
-              <ul>
-                <li>
-                  Spearheaded IT projects resulting in streamlined operations
-                  and increased productivity by 20%
-                </li>
-                <li>
-                  Optimized product development processes, reducing project
-                  turnaround time by 30%
-                </li>
-                <li>
-                  Managed UX improvements that led to a 15% increase in customer
-                  satisfaction
-                </li>
-              </ul>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="link" href="#" target="_blank" rel="noreferrer">Case Study</a>
+              </div>
+              <span class="tag">React • Node • MongoDB</span>
             </div>
+          </article>
+
+          <article class="card proj" data-tags="web platform">
+            <div class="proj-top">
+              <div>
+                <h3>GPSBAKU.AZ — Fleet Tracking System</h3>
+                <span class="tag">Platform</span> <span class="tag">Web</span>
+                <p>Dashboards, role permissions, and performance-oriented UI for operations.</p>
+              </div>
+            </div>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="link" href="#" target="_blank" rel="noreferrer">Overview</a>
+              </div>
+              <span class="tag">React • TypeScript</span>
+            </div>
+          </article>
+
+          <article class="card proj" data-tags="web">
+            <div class="proj-top">
+              <div>
+                <h3>Beetours.az — Travel & Tourism Platform</h3>
+                <span class="tag">Web</span>
+                <p>Content-rich multi-language UI with a focus on conversion and UX.</p>
+              </div>
+            </div>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="link" href="#" target="_blank" rel="noreferrer">Details</a>
+              </div>
+              <span class="tag">UI/UX • Web</span>
+            </div>
+          </article>
+
+          <article class="card proj" data-tags="plugin">
+            <div class="proj-top">
+              <div>
+                <h3>ABB Payment Gateway — WordPress Plugin</h3>
+                <span class="tag">Plugin</span>
+                <p>Payment flow integration with secure callback/verification and production-ready settings.</p>
+              </div>
+            </div>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Docs</a>
+                <a class="link" href="#" target="_blank" rel="noreferrer">Demo</a>
+              </div>
+              <span class="tag">WordPress • Payments</span>
+            </div>
+          </article>
+
+          <article class="card proj" data-tags="web">
+            <div class="proj-top">
+              <div>
+                <h3>ELTA Development QSC — Corporate Website</h3>
+                <span class="tag">Web</span>
+                <p>Modern corporate site, performance improvements, and maintainable content structure.</p>
+              </div>
+            </div>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Live</a>
+              </div>
+              <span class="tag">Front-end</span>
+            </div>
+          </article>
+
+          <article class="card proj" data-tags="web">
+            <div class="proj-top">
+              <div>
+                <h3>Book Store (JavaScript)</h3>
+                <span class="tag">Web</span>
+                <p>Core JS project focusing on UI interactions, filtering, and clean UX.</p>
+              </div>
+            </div>
+            <div class="proj-bottom">
+              <div class="proj-links">
+                <a class="link" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+              </div>
+              <span class="tag">JavaScript</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="section-title">
+          <div>
+            <h2>Experience</h2>
+            <p class="lead">Clean timeline (based on your CV entries). Update bullets with metrics when you want.</p>
           </div>
-          <div class="company-group">
-            <!-- <div class="company-name">05/2024 - Present</div> -->
-            <div class="company-name">NF Education</div>
-            <div class="position-item">
-              <div class="timeline-date">05/2023 - 05/2024</div>
-              <div class="timeline-title">Middle Frontend Web Developer</div>
-              <ul>
-                <li>Managed the development and deployment of web projects.</li>
-                <li>
-                  Preserved seamless functionality and security for company
-                  systems, supporting {5} key departments.
-                </li>
-                <li>
-                  Efficiently supported the director in administrative and
-                  communication tasks for {3} major initiatives.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="company-group">
-            <!-- <div class="company-name">05/2024 - Present</div> -->
-            <div class="company-name">Trust Center Holding MMC</div>
-            <div class="position-item">
-              <div class="timeline-date">05/2023 - 05/2024</div>
-              <div class="timeline-title">Middle Frontend Web Developer</div>
-              <ul>
-                <li>Managed the development and deployment of web projects.</li>
-                <li>
-                  Preserved seamless functionality and security for company
-                  systems, supporting {5} key departments.
-                </li>
-                <li>
-                  Efficiently supported the director in administrative and
-                  communication tasks for {3} major initiatives.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Other companies remain as separate entries -->
-          <div class="timeline-item">
-            <div class="timeline-date">05/2023 - 09/2023</div>
-            <div class="timeline-title">
-              Team Lead & Middle Front-end Developer
-            </div>
-            <div class="timeline-company">Trust Center</div>
-            <ul>
-              <li>
-                Led a development team to create 6 robust web applications using
-                Agile methodologies
-              </li>
-              <li>
-                Streamlined development processes by implementing modern
-                technologies across 10 projects
-              </li>
-              <li>
-                Monitored and ensured the on-time delivery of 12 projects while
-                maintaining quality standards
-              </li>
-              <li>
-                Mentored 8 junior developers, fostering a culture of
-                collaboration and continuous learning
-              </li>
+        </div>
+
+        <div class="card pad timeline">
+          <div class="job">
+            <h3>Information Communication Technology Specialist — ELTA Development QSC</h3>
+            <div class="meta">Baku • 05/2024 – 12/2025</div>
+            <ul class="bullets">
+              <li>Managed IT infrastructure and network stability/security.</li>
+              <li>Implemented monitoring and cybersecurity practices.</li>
+              <li>Supported teams with high-level technical troubleshooting and optimization.</li>
             </ul>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">05/2023 - Present</div>
-            <div class="timeline-title">Web System Developer (Freelancer)</div>
-            <div class="timeline-company">NF Education</div>
-            <ul>
-              <li>
-                Developed and maintained web systems for educational institution
-              </li>
-              <li>
-                Implemented user-centered design approaches to improve student
-                and faculty experience
-              </li>
-              <li>
-                Created scalable solutions to support growing educational
-                requirements
-              </li>
+
+          <div class="job">
+            <h3>Director Assistant, IT Manager — ELTA Development QSC</h3>
+            <div class="meta">Baku • 05/2024 – 11/2024</div>
+            <ul class="bullets">
+              <li>Coordinated IT/web operations and improved internal workflows.</li>
+              <li>Worked cross-functionally to deliver business-critical improvements.</li>
             </ul>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">05/2023 - 05/2024</div>
-            <div class="timeline-title">
-              Digital Technology Front End Trainer, Middle Front-end Developer
-            </div>
-            <div class="timeline-company">Caspian Capital Group MMC</div>
-            <ul>
-              <li>
-                Trained and mentored junior developers in front-end technologies
-              </li>
-              <li>Developed modern web applications for financial services</li>
-              <li>
-                Led adoption of best practices in web development across teams
-              </li>
+
+          <div class="job">
+            <h3>Full-stack Developer — Upturnlab</h3>
+            <div class="meta">Baku • 04/2025 – 09/2025</div>
+            <ul class="bullets">
+              <li>Delivered features end-to-end across front-end and APIs.</li>
+              <li>Collaborated with product and design to refine scope and UX.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <h3>Middle Front-end Developer — NF Education</h3>
+            <div class="meta">Baku • 05/2023 – 05/2024</div>
+            <ul class="bullets">
+              <li>Built and shipped responsive interfaces and internal tools.</li>
+              <li>Improved UI reliability and performance across pages.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <h3>Web System Developer (Freelancer) — Caspian Capital Group MMC</h3>
+            <div class="meta">Baku • 12/2023 – 04/2024</div>
+            <ul class="bullets">
+              <li>Delivered web modules aligned with business requirements.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <h3>Team Lead & Middle Front-End Developer — Trust Center</h3>
+            <div class="meta">Baku • 05/2023 – 09/2023</div>
+            <ul class="bullets">
+              <li>Led a small team and shipped multiple web apps using Agile practices.</li>
+              <li>Mentored juniors and improved team delivery cadence.</li>
+            </ul>
+          </div>
+
+          <div class="job" style="margin-bottom:0;">
+            <h3>Junior Front-End Developer, Mentor — Coders Azerbaijan</h3>
+            <div class="meta">Baku • 01/2022 – 05/2023</div>
+            <ul class="bullets">
+              <li>Built foundational UI components and supported learners as a mentor.</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <footer id="contact">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-col">
-            <h3>Ravan Khankishiyev</h3>
-            <p>
-              Technical Product Owner bridging the gap between vision and
-              execution.
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-title">
+          <div>
+            <h2>Contact</h2>
+            <p class="lead">Fastest way: email or LinkedIn. I respond quickly.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card pad">
+            <h3 style="font-size:1.06rem;">Let’s talk</h3>
+            <p class="muted" style="margin-top:.55rem;">
+              If you’re hiring or want to collaborate on a product, send a message. I’m open to frontend / product-oriented roles.
             </p>
+
+            <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+              <a class="btn" href="mailto:ravan.xankisiyev.032@gmail.com">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Email me
+              </a>
+              <a class="btn secondary" href="tel:+994556457732">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-16-7-16-16 0-1 1-2 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Call
+              </a>
+            </div>
           </div>
 
-          <div class="footer-col">
-            <h3>Connect</h3>
-            <ul class="social-links">
-              <li>
-                <a href="https://www.linkedin.com/in/khankishiyev-ravan/"
-                  >LinkedIn</a
-                >
-              </li>
-              <li><a href="https://github.com/Khankisiyevravan">GitHub</a></li>
-              <li><a href="https://www.khankisiyevravan.com">Website</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h3>Contact</h3>
-            <ul class="contact-list">
-              <li>
-                <a href="mailto:ravan.xankisiyev.032@gmail.com"
-                  >ravan.xankisiyev.032@gmail.com</a
-                >
-              </li>
-              <li><a href="tel:+994556457732">+994 55 645 77 32</a></li>
-            </ul>
+          <div class="card pad">
+            <h3 style="font-size:1.06rem;">Links</h3>
+            <div style="margin-top:.75rem; display:grid; gap:.6rem;">
+              <a class="link" href="https://www.linkedin.com/in/khankishiyev-ravan/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="link" href="https://github.com/Khankisiyevravan" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="link" href="https://khankishiyevravan.info" target="_blank" rel="noreferrer">Portfolio Domain</a>
+            </div>
+            <div class="fine">Languages: Azerbaijani (Native) • English (Advanced) • Turkish (Proficient)</div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="copyright">
-          &copy; 2025 Ravan Khankishiyev. All Rights Reserved.
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div style="display:flex;align-items:center;gap:.7rem;">
+              <div class="logo" style="width:42px;height:42px;">RK</div>
+              <div>
+                <div style="font-weight:900;">Ravan Khankishiyev</div>
+                <div class="muted" style="font-size:.92rem;">Front-End Developer • Technical Product Owner</div>
+              </div>
+            </div>
+            <p class="fine">© <span id="year"></span> Ravan Khankishiyev. All rights reserved.</p>
+          </div>
+          <div>
+            <div style="font-weight:800;margin-bottom:.6rem;">Navigation</div>
+            <div class="muted" style="display:grid;gap:.45rem;">
+              <a href="#about">About</a>
+              <a href="#skills">Skills</a>
+              <a href="#projects">Projects</a>
+              <a href="#experience">Experience</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:800;margin-bottom:.6rem;">Quick contact</div>
+            <div class="muted" style="display:grid;gap:.45rem;">
+              <a href="mailto:ravan.xankisiyev.032@gmail.com">ravan.xankisiyev.032@gmail.com</a>
+              <a href="tel:+994556457732">+994 55 645 77 32</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
+
+    <script>
+      // YEAR
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // THEME
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      if (saved) root.setAttribute("data-theme", saved);
+
+      document.getElementById("themeBtn").addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || "dark";
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+      });
+
+      // MOBILE MENU
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("open"));
+      mobileMenu.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => mobileMenu.classList.remove("open"));
+      });
+
+      // PROJECT FILTER + SEARCH
+      const cards = Array.from(document.querySelectorAll(".proj"));
+      const search = document.getElementById("search");
+      let activeFilter = "all";
+
+      function apply(){
+        const q = (search.value || "").trim().toLowerCase();
+        cards.forEach(c => {
+          const tags = (c.getAttribute("data-tags") || "").toLowerCase();
+          const text = c.innerText.toLowerCase();
+          const matchFilter = activeFilter === "all" ? true : tags.includes(activeFilter);
+          const matchSearch = !q ? true : (text.includes(q) || tags.includes(q));
+          c.style.display = (matchFilter && matchSearch) ? "" : "none";
+        });
+      }
+
+      document.querySelectorAll("[data-filter]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeFilter = btn.getAttribute("data-filter");
+          apply();
+        });
+      });
+      search.addEventListener("input", apply);
+    </script>
   </body>
 </html>
